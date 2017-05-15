@@ -26,6 +26,12 @@ namespace UTWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/logic").Include(
+                "~/Scripts/logic/index/indexlogic.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                "~/Scripts/knockout-3.4.2.js"));
         }
     }
 }
