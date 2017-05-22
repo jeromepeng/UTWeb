@@ -5,16 +5,20 @@
 
 
 <div class="row" data-bind="visible: $data.isShowButton">
-    <input id="UploadFile" type="button" value="Upload File" data-bind="click: $data.OnChange" />
+    <input id="UploadFile" type="button" value="Upload File" data-bind="click: $data.onChange" />
 </div>
 
 <div class="row">   
-    <select id="AppType" data-bind="event: {change: $data.OnChange}"><!--"onchange" should be binded in this way-->
+    <select id="appType" data-bind="event: {change: $data.onChange}"><!--"onchange" should be binded in this way-->
         <option>JavaScript</option>
         <option>DLL</option>
     </select>
 </div>
 
+<div class="row">
+    <textarea id="jsTextArea" rows="20" cols="200"></textarea>
+    <input id="runJS" type="button" value="Run JS" data-bind="click: $data.runJS" />
+</div>
 <script type="text/javascript" src="~/Scripts/logic/index/indexlogic.js"></script><!--Add your viewmodel at the end of the HTML, or it won't work-->
 
 
