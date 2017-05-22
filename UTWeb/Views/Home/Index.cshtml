@@ -3,39 +3,21 @@
 }
 
 
-<script type="text/javascript" src="~/Scripts/logic/index/indexlogic.js"></script>
-<div class="row" data-bind="visible: ShowUploadButton">
 
-    <input id="UploadFile" type="button" value="Upload File" data-bind="click: $parent.OnChange" />
+<div class="row" data-bind="visible: $data.isShowButton">
+    <input id="UploadFile" type="button" value="Upload File" data-bind="click: $data.OnChange" />
 </div>
 
 <div class="row">   
-    <select id="AppType" data-bind="onchange: OnChange">
+    <select id="AppType" data-bind="event: {change: $data.OnChange}"><!--"onchange" should be binded in this way-->
         <option>JavaScript</option>
         <option>DLL</option>
     </select>
 </div>
 
-<ul data-bind="foreach: places">
-    <li>
-        <!--foreach里面上下文是每一个place,可以用$data来表示当前项的值-->
-        <span data-bind="text: $data"></span>
-        <!--这儿也在foreach里面，所以click绑定对应的上下文也是$data,然后用$parent来调用其父项目，也就是viewModel，然后调用里面的removePlace函数-->
-        <button data-bind="click: $parent.removePlace">Remove</button>
-    </li>
-</ul>
+<script type="text/javascript" src="~/Scripts/logic/index/indexlogic.js"></script><!--Add your viewmodel at the end of the HTML, or it won't work-->
 
-<script type="text/javascript">
-    function MyViewModel() {
-        var self = this;
-        self.places = ko.observableArray(['London', 'Paris', 'Tokyo']);
-        //当前项的值会被传递过来作为第一个参数，所以我们知道数组里面的哪一项被移除
-        self.removePlace = function (place) {
-            self.places.remove(place)
-        }
-    }
-    ko.applyBindings(new MyViewModel());
-</script>
+
 
 
 
